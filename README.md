@@ -32,5 +32,5 @@
  http://localhost:5229/api/v1/employee   
  Filter 
  http://localhost:5229/api/v1/employee?qname=emin
-  - qname -  name variable in the response data
+  - qname -  When q is prefixed to a variable in the link all returned data is filtered by that variable
  

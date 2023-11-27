@@ -4,8 +4,7 @@
 - Entity FrameWork Core 7.0
 - Mediatr
 - AutoMapper
-- FluentValidation
-  
+- FluentValidation  
 
 ### **Database Migrations**
 1. Open the `EmployeeManagement.sln` solution file with Visual Studio.
@@ -32,5 +31,4 @@
  http://localhost:5229/api/v1/employee   
  Filter 
  http://localhost:5229/api/v1/employee?qname=emin
-  - qname -  When q is prefixed to a variable in the link all returned data is filtered by that variable
- 
+  - qname -  When q is prefixed to a variable in the link all returned data is filtered by that variable  

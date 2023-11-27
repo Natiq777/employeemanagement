@@ -10,7 +10,7 @@
 ### **Database Migrations**
 1. Open the `EmployeeManagement.sln` solution file with Visual Studio.
 
-1. Using the Cloud SQL Server IP address, user and password you created preceding, modify your connection string in the `Web.config` file:
+1. Using the Cloud SQL Server IP address, user and password you created preceding, modify your connection string in the `appsettings.json` file:
 
    ```XML
     

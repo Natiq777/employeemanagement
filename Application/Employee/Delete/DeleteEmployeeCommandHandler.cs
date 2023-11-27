@@ -1,15 +1,8 @@
 ﻿using Application.Common.Exceptions;
-using Application.Common.ResponseModels;
-using AutoMapper;
+using Application.Common.ResponseModels; 
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Delete.Create
+using Microsoft.EntityFrameworkCore; 
+namespace Application.Employee.Delete
 {
     public class DeleteEmployeeCommandHandler : BaseHandler, IRequestHandler<DeleteEmployeeCommand, BaseResponse>
     {

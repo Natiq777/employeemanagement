@@ -1,4 +1,4 @@
-﻿namespace Application.Delete.Create
+﻿namespace Application.Employee.Delete
 {
     public class DeleteEmployeeCommandValidationMessage
     {

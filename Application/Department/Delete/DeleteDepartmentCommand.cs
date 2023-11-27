@@ -1,8 +1,8 @@
 ﻿using Application.Common.ResponseModels;
 using MediatR;
-namespace Application.Employee.Delete
+namespace Application.Department.Delete
 {
-    public class DeleteEmployeeCommand : IRequest<BaseResponse>
+    public class DeleteDepartmentCommand : IRequest<BaseResponse>
     {
         public required int Id { get; set; }
     }

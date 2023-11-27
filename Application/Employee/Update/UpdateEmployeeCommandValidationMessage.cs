@@ -1,4 +1,4 @@
-﻿namespace Application.Employee.Create
+﻿namespace Application.Employee.Update
 {
     public class UpdateEmployeeCommandValidationMessage
     {

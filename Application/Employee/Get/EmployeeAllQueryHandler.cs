@@ -31,7 +31,7 @@ namespace Application.Employee.Get
                     Department = x.Department.Name,
                     Name = x.Name,
                     Surname = x.Surname,
-                }).AddWhereExpressionsToQuery(request.Filters);             
+                }).AddWhereExpressionsToQuery(request.Filters).CustomOrderBy(request.SortBy,request.SortByDirect);             
 
             if (query == null)
             {

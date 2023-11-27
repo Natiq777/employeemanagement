@@ -1,21 +1,21 @@
 ﻿using Application.Common.ResponseModels; 
-using Application.Employee.Create;
-using Application.Employee.Delete;
-using Application.Employee.Get;
-using Application.Employee.GetById;
-using Application.Employee.Update;
+using Application.Department.Create;
+using Application.Department.Delete;
+using Application.Department.Get;
+using Application.Department.GetById;
+using Application.Department.Update;
 using Application.Filters; 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc; 
 
 namespace EmployeeManagement.Api.Controllers.v1
 {
-    [Route("api/v1/employee")]
+    [Route("api/v1/department")]
     [AllowAnonymous]
-    public class EmployeeController : ApiControllerBase
+    public class DepartmentController : ApiControllerBase
     {
         private readonly IHttpContextAccessor _accessor;
-        public EmployeeController(IHttpContextAccessor accessor)           
+        public DepartmentController(IHttpContextAccessor accessor)           
         { 
             _accessor = accessor; 
         }
@@ -24,33 +24,33 @@ namespace EmployeeManagement.Api.Controllers.v1
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
 
-        public async Task<ActionResult<BaseResponse>> Add([FromBody] CreateEmployeeCommand command)
+        public async Task<ActionResult<BaseResponse>> Add([FromBody] CreateDepartmentCommand command)
         {
             return Created("", await Mediator.Send(command));
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<BaseResponse>> Update([FromBody] UpdateEmployeeCommand command)
+        public async Task<ActionResult<BaseResponse>> Update([FromBody] UpdateDepartmentCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
-        public async Task<ActionResult<BaseResponse>> Delete([FromQuery] DeleteEmployeeCommand command)
+        public async Task<ActionResult<BaseResponse>> Delete([FromQuery] DeleteDepartmentCommand command)
         {
             return Accepted(await Mediator.Send(command));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetResponse<EmployeeGetByIdDto>>> GetById(int id)
+        public async Task<ActionResult<GetResponse<DepartmentGetByIdDto>>> GetById(int id)
         {
-            var query = new EmployeeGetByIdQuery { Id = id };
+            var query = new DepartmentGetByIdQuery { Id = id };
             return await Mediator.Send(query);
         }
         [HttpGet]
-        public async Task<ActionResult<ListResponse<EmployeeGetByIdDto>>> Get([FromQuery] EmployeeAllQuery query)
+        public async Task<ActionResult<ListResponse<DepartmentGetByIdDto>>> Get([FromQuery] DepartmentAllQuery query)
         {
             if (_accessor.HttpContext.Request.QueryString.HasValue)
             {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Delete.Create
+namespace Application.Employee.Delete
 {
     public class DeleteEmployeeCommandValidator : AbstractValidator<DeleteEmployeeCommand>
     {

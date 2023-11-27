@@ -86,6 +86,7 @@ namespace Application.Filters
                 return null;
             }
         }
+         
         private static Expression ToExprConstant(Type prop, string value)
         {
             if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
@@ -130,6 +131,27 @@ namespace Application.Filters
         {
             var invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast<Expression>());
             return Expression.Lambda<Func<T, TResult>>(Expression.AndAlso(expr1.Body, invokedExpr), expr1.Parameters);
+        }
+
+        public static IQueryable<T> CustomOrderBy<T>(this IQueryable<T> source, string columnName, string orderByType )
+        {
+            if (String.IsNullOrEmpty(columnName))
+            {
+                return source;
+            }
+
+            ParameterExpression parameter = Expression.Parameter(source.ElementType, "");
+
+            MemberExpression property = Expression.Property(parameter, columnName);
+            LambdaExpression lambda = Expression.Lambda(property, parameter);
+
+            string methodName = orderByType!="desc" ? "OrderBy" : "OrderByDescending";
+
+            Expression methodCallExpression = Expression.Call(typeof(Queryable), methodName,
+                                  new Type[] { source.ElementType, property.Type },
+                                  source.Expression, Expression.Quote(lambda));
+
+            return source.Provider.CreateQuery<T>(methodCallExpression);
         }
     }
 }

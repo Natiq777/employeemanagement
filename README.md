@@ -5,22 +5,32 @@
 - Mediatr
 - AutoMapper
 - FluentValidation
+  
 
-Database Migrations
-To use dotnet-ef for your migrations first ensure that "UseInMemoryDatabase" is disabled, as described within previous section. Then, add the following flags to your command (values assume you are executing from repository root)
+### **Database Migrations**
+1. Open the `EmployeeManagement.sln` solution file with Visual Studio.
 
-- project Core/Infrastructure (optional if in this folder)
-- startup-project Presentation/EmployeeManagment.API
-- output-dir /Infrastructure/Persistence/Migrations
-For example, to add a new migration from the root folder:
+1. Using the Cloud SQL Server IP address, user and password you created preceding, modify your connection string in the `appsettings.json` file:
 
-dotnet ef migrations add "SampleMigration" --project Core\Infrastructure --startup-project Presentation\EmployeeManagement.APi --output-dir Persistence\Migrations
+   ```XML
+    
+   "ConnectionStrings": {
+        "EmployeeManagementDb": "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=employee_management;Integrated Security=True;Connect Timeout=60;TrustServerCertificate=True"
+      } 
+   ```
+ 
+1. Set as startup project EmployeeManagement.Api
+2. In Visual Studio, open the Package Manager Console from the **View** menu -> **Other Windows** -> **Package Manager Console**. 
+   -  Default project Core\Infrastructure  
+   -  Enter the following command:
 
-Domain
-This will contain all entities, enums, exceptions, interfaces, types and logic specific to the domain layer.
-
-Application
-This layer contains all application logic. It is dependent on the domain layer, but has no dependencies on any other layer or project. This layer defines interfaces that are implemented by outside layers. For example, if the application need to access a notification service, a new interface would be added to application and an implementation would be created within infrastructure.
-
-Infrastructure
-This layer contains classes for accessing external resources such as file systems, web services, smtp, and so on. These classes should be based on interfaces defined within the application layer.
+   ```cmd
+   PM> update-database
+   ```
+ ### **Note**
+ All
+ http://localhost:5229/api/v1/employee   
+ Filter 
+ http://localhost:5229/api/v1/employee?qname=emin
+  - qname -  When q is prefixed to a variable in the link all returned data is filtered by that variable
+ 

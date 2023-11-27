@@ -7,7 +7,7 @@
 - FluentValidation
   
 
-Database Migrations   
+### **Database Migrations**
 1. Open the `EmployeeManagement.sln` solution file with Visual Studio.
 
 1. Using the Cloud SQL Server IP address, user and password you created preceding, modify your connection string in the `Web.config` file:
@@ -27,11 +27,10 @@ Database Migrations
    ```cmd
    PM> update-database
    ```
-Domain
-This will contain all entities, enums, exceptions, interfaces, types and logic specific to the domain layer.
-
-Application
-This layer contains all application logic. It is dependent on the domain layer, but has no dependencies on any other layer or project. This layer defines interfaces that are implemented by outside layers. For example, if the application need to access a notification service, a new interface would be added to application and an implementation would be created within infrastructure.
-
-Infrastructure
-This layer contains classes for accessing external resources such as file systems, web services, smtp, and so on. These classes should be based on interfaces defined within the application layer.
+ ### **Note**
+ All
+ http://localhost:5229/api/v1/employee   
+ Filter 
+ http://localhost:5229/api/v1/employee?qname=emin
+  - qname -  name variable in the response data
+ 

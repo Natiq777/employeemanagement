@@ -5,17 +5,28 @@
 - Mediatr
 - AutoMapper
 - FluentValidation
+  
 
-Database Migrations
-To use dotnet-ef for your migrations first ensure that "UseInMemoryDatabase" is disabled, as described within previous section. Then, add the following flags to your command (values assume you are executing from repository root)
+Database Migrations   
+1. Open the `EmployeeManagement.sln` solution file with Visual Studio.
 
-- project Core/Infrastructure (optional if in this folder)
-- startup-project Presentation/EmployeeManagment.API
-- output-dir /Infrastructure/Persistence/Migrations
-For example, to add a new migration from the root folder:
+1. Using the Cloud SQL Server IP address, user and password you created preceding, modify your connection string in the `Web.config` file:
 
-dotnet ef migrations add "SampleMigration" --project Core\Infrastructure --startup-project Presentation\EmployeeManagement.APi --output-dir Persistence\Migrations
+   ```XML
+    
+   "ConnectionStrings": {
+        "EmployeeManagementDb": "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=employee_management;Integrated Security=True;Connect Timeout=60;TrustServerCertificate=True"
+      } 
+   ```
+ 
+1. Set as startup project EmployeeManagement.Api
+2. In Visual Studio, open the Package Manager Console from the **View** menu -> **Other Windows** -> **Package Manager Console**. 
+   -  Default project Core\Infrastructure  
+   -  Enter the following command:
 
+   ```cmd
+   PM> update-database
+   ```
 Domain
 This will contain all entities, enums, exceptions, interfaces, types and logic specific to the domain layer.
 
